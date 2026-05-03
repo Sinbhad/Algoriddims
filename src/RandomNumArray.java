@@ -8,13 +8,12 @@ public class RandomNumArray {
     /**
      * Generate a random numbers array
      * @param length
-     * @return
      */
     public int[] generateRandomNumArray(int length) {
         Random rand = new Random();
         int[] arr = new int[length];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rand.nextInt(9999);
+            arr[i] = rand.nextInt(10000);
         }
         return arr;
     }
@@ -28,7 +27,7 @@ public class RandomNumArray {
         Random rand = new Random();
         ArrayList<Integer> arr = new ArrayList<>();
         for(int i = 0; i < size; i++){
-            arr.add(rand.nextInt(9999));
+            arr.add(rand.nextInt(10000));
         }
         return arr;
     }
@@ -65,7 +64,7 @@ public class RandomNumArray {
      * @param value
      * @return
      */
-    public Boolean linearSearchArray(int[] arr, int value){
+    public boolean linearSearchArray(int[] arr, int value){
         for(int i = 0; i < arr.length; i++){
             if(arr[i] == value){
                 return true;
@@ -80,7 +79,7 @@ public class RandomNumArray {
      * @param value
      * @return
      */
-    public Boolean linearSearchArrayList(ArrayList<Integer> arr, int value){
+    public boolean linearSearchArrayList(ArrayList<Integer> arr, int value){
         for (Integer integer : arr) {
             if (integer == value) {
                 return true;
@@ -175,9 +174,8 @@ public class RandomNumArray {
     /**
      * Bubble sort for an array
      * @param arr
-     * @return
      */
-    public int[] bubbleSort(int[] arr){
+    public void bubbleSort(int[] arr){
         this.swapCount = 0;
         int[] bubbled = arr;
         for(int i = 0; i < arr.length; i++){               //Mentioned by Andrew Davitt vv
@@ -190,15 +188,13 @@ public class RandomNumArray {
                 }
             }
         }
-        return bubbled;
     }
 
     /**
      * Bubble sort for an ArrayList
      * @param arr
-     * @return
      */
-    public ArrayList bubbleSort(ArrayList<Integer> arr){
+    public void bubbleSort(ArrayList<Integer> arr){
         this.swapCount = 0;
         ArrayList<Integer> bubbled = arr;
         for(int i = 0; i < arr.size(); i++){
@@ -211,7 +207,6 @@ public class RandomNumArray {
                 }
             }
         }
-        return bubbled;
     }
 
     /**
@@ -225,9 +220,8 @@ public class RandomNumArray {
     /**
      * Insertion sort for an array
      * @param arr
-     * @return
      */
-    public int[] insertionSortArray(int[] arr){
+    public void insertionSortArray(int[] arr){
         for(int i = 1; i < arr.length; i++){
             int j = i - 1;
             int temp = arr[i];
@@ -237,15 +231,13 @@ public class RandomNumArray {
             }
             arr[j + 1] = temp;
         }
-        return arr;
     }
 
     /**
      * Insertion sort for an ArrayList
      * @param arr
-     * @return
      */
-    public ArrayList insertionSortArrayList(ArrayList<Integer> arr){
+    public void insertionSortArrayList(ArrayList<Integer> arr){
         for(int i = 1; i < arr.size(); i++){
             int j = i - 1;
             int temp = arr.get(i);
@@ -255,16 +247,14 @@ public class RandomNumArray {
             }
             arr.set(j + 1, temp);
         }
-        return arr;
     }
 
 
     /**
      * Selection sort method for an array
      * @param arr
-     * @return
      */
-    public int[] selectionSortArray(int[] arr){
+    public void selectionSortArray(int[] arr){
         for(int i = 0; i < arr.length; i++){
             int min = i;
             for(int j = i + 1; j < arr.length; j++){
@@ -276,15 +266,13 @@ public class RandomNumArray {
             arr[i] = arr[min];
             arr[min] = temp;
         }
-        return arr;
     }
 
     /**
      * Selection sort method for an ArrayList
      * @param arr
-     * @return
      */
-    public ArrayList selectionSortArrayList(ArrayList<Integer> arr){
+    public void selectionSortArrayList(ArrayList<Integer> arr){
         for(int i = 0; i < arr.size(); i++){
             int min = i;
             for(int j = i + 1; j < arr.size(); j++){
@@ -296,12 +284,15 @@ public class RandomNumArray {
             arr.set(i, arr.get(min));
             arr.set(min, temp);
         }
-        return arr;
     }
 
-
-    public int[] shellSortArray(int[] arr){
+    /**
+     * Shell sort method for an array
+     * @param arr
+     */
+    public void shellSortArray(int[] arr){
         int length = arr.length;
+        //reduce the size of the gap by a factor of 4 each time, until it reaches 1
         for (int gap = length / 4; gap >= 1; gap /= 4) {
             for(int i = gap; i < length; i++){
                 int gappedArr = arr[i];
@@ -312,10 +303,13 @@ public class RandomNumArray {
                 arr[j] = gappedArr;
             }
         }
-        return arr;
     }
 
-    public ArrayList shellSortArrayList(ArrayList<Integer> arr){
+    /**
+     * Shell sort method for an ArrayList
+     * @param arr
+     */
+    public void shellSortArrayList(ArrayList<Integer> arr){
         int length = arr.size();
         for (int gap = length / 4; gap >= 1; gap /= 4) {
             for(int i = gap; i < length; i++){
@@ -327,18 +321,16 @@ public class RandomNumArray {
                 arr.set(j, temp);
             }
         }
-        return arr;
     }
 
     /**
      * Merge sort for an array
      * @param arr
-     * @return
      */
-    public int[] mergeSortArray(int[] arr) {
+    public void mergeSortArray(int[] arr) {
         //base case to prevent infinite recursion, stops if the array is of length 1 or 0
         if (arr.length < 2) {
-            return arr;
+            return;
         }
 
         //split the array in half
@@ -378,19 +370,16 @@ public class RandomNumArray {
         while (j < right.length) {
             arr[k++] = right[j++];
         }
-
-        return arr;
     }
 
     /**
      * Merge sort for an ArrayList
      * @param arr
-     * @return
      */
-    public ArrayList<Integer> mergeSortArrayList(ArrayList<Integer> arr){
+    public void mergeSortArrayList(ArrayList<Integer> arr){
         //read notes on merge sort array
         if(arr.size() < 2){
-            return arr;
+            return;
         }
 
         int midIndex = arr.size() / 2;
@@ -431,22 +420,32 @@ public class RandomNumArray {
             j++;
             k++;
         }
-        return arr;
     }
 
-    public int[] quickSortArray(int[] arr, int start, int end) {
+    /**
+     * Quick sort for an array
+     * @param arr
+     * @param start
+     * @param end
+     */
+    public void quickSortArray(int[] arr, int start, int end) {
         if (start >= end) {
-            return arr;
+            return;
         }
 
         int pivotIndex = partitionArray(arr, start, end);
 
         quickSortArray(arr, start, pivotIndex - 1);
         quickSortArray(arr, pivotIndex + 1, end);
-
-        return arr;
     }
 
+    /**
+     * Partition method for quick sort Array
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public int partitionArray(int[] arr, int start, int end) {
         int pivot = arr[end];
         int i = (start - 1);
@@ -467,19 +466,30 @@ public class RandomNumArray {
         return i + 1;
     }
 
-    public ArrayList<Integer> quickSortArrayList(ArrayList<Integer> arr, int start, int end) {
+    /**
+     * Quick sort for an ArrayList
+     * @param arr
+     * @param start
+     * @param end
+     */
+    public void quickSortArrayList(ArrayList<Integer> arr, int start, int end) {
         if (start >= end) {
-            return arr;
+            return;
         }
 
         int pivotIndex = partitionArrayList(arr, start, end);
 
         quickSortArrayList(arr, start, pivotIndex - 1);
         quickSortArrayList(arr, pivotIndex + 1, end);
-
-        return arr;
     }
 
+    /**
+     * Partition method for quick sort ArrayList
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public int partitionArrayList(ArrayList<Integer> arr, int start, int end) {
         int pivot = arr.get(end);
         int i = (start - 1);
