@@ -23,7 +23,7 @@ public class RandomNumArray {
      * @param size
      * @return
      */
-    public ArrayList generateRandomNumArrayList(int size){
+    public ArrayList<Integer> generateRandomNumArrayList(int size){
         Random rand = new Random();
         ArrayList<Integer> arr = new ArrayList<>();
         for(int i = 0; i < size; i++){
